@@ -8,4 +8,12 @@
     tools:context=".Activities.ListaCitasPacienteActivity"
     tools:showIn="@layout/activity_lista_citas_paciente">
 
+    <TextView
+        android:id="@+id/textViewMisCitas"
+        android:layout_width="137dp"
+        android:layout_height="36dp"
+        android:text="Mis Citas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
