@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Online Dental Clinic</string>
+    <string name="title_activity_lista_citas_paciente">ListaCitasPacienteActivity</string>
+</resources>
