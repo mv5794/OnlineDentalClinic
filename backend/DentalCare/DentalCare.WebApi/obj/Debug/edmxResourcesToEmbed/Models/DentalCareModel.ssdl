@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DentalCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="dentalPieces">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codPiece" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="implement_treatment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idTreatment" Type="int" Nullable="false" />
+    <Property Name="idImplement" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="implements">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persons">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dni" Type="int" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="picture" Type="text" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idRole" Type="int" />
+    <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="reservation_date" Type="date" Nullable="false" />
+    <Property Name="estatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idDentalPiece" Type="int" />
+    <Property Name="idDentist" Type="int" />
+    <Property Name="idPacient" Type="int" />
+    <Property Name="idTreatment" Type="int" />
+    <Property Name="observation" Type="text" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="treatments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="cod_user" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="idPerson" Type="int" />
+    <Property Name="password" Type="varchar" MaxLength="18" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_implement_treatment_implements">
+    <End Role="implements" Type="Self.implements" Multiplicity="1" />
+    <End Role="implement_treatment" Type="Self.implement_treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="implements">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="implement_treatment">
+        <PropertyRef Name="idImplement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_implement_treatment_treatments">
+    <End Role="treatments" Type="Self.treatments" Multiplicity="1" />
+    <End Role="implement_treatment" Type="Self.implement_treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="treatments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="implement_treatment">
+        <PropertyRef Name="idTreatment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_persons_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="persons" Type="Self.persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="persons">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservations_dentalPieces">
+    <End Role="dentalPieces" Type="Self.dentalPieces" Multiplicity="0..1" />
+    <End Role="reservations" Type="Self.reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dentalPieces">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservations">
+        <PropertyRef Name="idDentalPiece" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservations_persons">
+    <End Role="persons" Type="Self.persons" Multiplicity="0..1" />
+    <End Role="reservations" Type="Self.reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservations">
+        <PropertyRef Name="idDentist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservations_persons1">
+    <End Role="persons" Type="Self.persons" Multiplicity="0..1" />
+    <End Role="reservations" Type="Self.reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservations">
+        <PropertyRef Name="idPacient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservations_treatments">
+    <End Role="treatments" Type="Self.treatments" Multiplicity="0..1" />
+    <End Role="reservations" Type="Self.reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="treatments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reservations">
+        <PropertyRef Name="idTreatment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_persons">
+    <End Role="persons" Type="Self.persons" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persons">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="idPerson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DentalCareModelStoreContainer">
+    <EntitySet Name="dentalPieces" EntityType="Self.dentalPieces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="implement_treatment" EntityType="Self.implement_treatment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="implements" EntityType="Self.implements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persons" EntityType="Self.persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservations" EntityType="Self.reservations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="treatments" EntityType="Self.treatments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_implement_treatment_implements" Association="Self.FK_implement_treatment_implements">
+      <End Role="implements" EntitySet="implements" />
+      <End Role="implement_treatment" EntitySet="implement_treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_implement_treatment_treatments" Association="Self.FK_implement_treatment_treatments">
+      <End Role="treatments" EntitySet="treatments" />
+      <End Role="implement_treatment" EntitySet="implement_treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_persons_roles" Association="Self.FK_persons_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="persons" EntitySet="persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservations_dentalPieces" Association="Self.FK_reservations_dentalPieces">
+      <End Role="dentalPieces" EntitySet="dentalPieces" />
+      <End Role="reservations" EntitySet="reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservations_persons" Association="Self.FK_reservations_persons">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="reservations" EntitySet="reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservations_persons1" Association="Self.FK_reservations_persons1">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="reservations" EntitySet="reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservations_treatments" Association="Self.FK_reservations_treatments">
+      <End Role="treatments" EntitySet="treatments" />
+      <End Role="reservations" EntitySet="reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_persons" Association="Self.FK_users_persons">
+      <End Role="persons" EntitySet="persons" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

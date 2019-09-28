@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DentalCareModelStoreContainer" CdmEntityContainer="DentalCareEntities">
+    <EntitySetMapping Name="dentalPieces">
+      <EntityTypeMapping TypeName="DentalCareModel.dentalPiece">
+        <MappingFragment StoreEntitySet="dentalPieces">
+          <ScalarProperty Name="codPiece" ColumnName="codPiece" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="implement_treatment">
+      <EntityTypeMapping TypeName="DentalCareModel.implement_treatment">
+        <MappingFragment StoreEntitySet="implement_treatment">
+          <ScalarProperty Name="idImplement" ColumnName="idImplement" />
+          <ScalarProperty Name="idTreatment" ColumnName="idTreatment" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="implements">
+      <EntityTypeMapping TypeName="DentalCareModel.implement">
+        <MappingFragment StoreEntitySet="implements">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persons">
+      <EntityTypeMapping TypeName="DentalCareModel.person">
+        <MappingFragment StoreEntitySet="persons">
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="idRole" ColumnName="idRole" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservations">
+      <EntityTypeMapping TypeName="DentalCareModel.reservation">
+        <MappingFragment StoreEntitySet="reservations">
+          <ScalarProperty Name="observation" ColumnName="observation" />
+          <ScalarProperty Name="idTreatment" ColumnName="idTreatment" />
+          <ScalarProperty Name="idPacient" ColumnName="idPacient" />
+          <ScalarProperty Name="idDentist" ColumnName="idDentist" />
+          <ScalarProperty Name="idDentalPiece" ColumnName="idDentalPiece" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="reservation_date" ColumnName="reservation_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="DentalCareModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="treatments">
+      <EntityTypeMapping TypeName="DentalCareModel.treatment">
+        <MappingFragment StoreEntitySet="treatments">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DentalCareModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idPerson" ColumnName="idPerson" />
+          <ScalarProperty Name="cod_user" ColumnName="cod_user" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

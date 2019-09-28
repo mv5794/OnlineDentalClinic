@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c37fdc1fbbe4a7889add0f7cac159a2" Name="Diagram1">
+        <EntityTypeShape EntityType="DentalCareModel.dentalPiece" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DentalCareModel.implement_treatment" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="DentalCareModel.implement" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="DentalCareModel.person" Width="1.5" PointX="3.75" PointY="7.25" />
+        <EntityTypeShape EntityType="DentalCareModel.reservation" Width="1.5" PointX="6" PointY="3.25" />
+        <EntityTypeShape EntityType="DentalCareModel.role" Width="1.5" PointX="1.5" PointY="8.25" />
+        <EntityTypeShape EntityType="DentalCareModel.treatment" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="DentalCareModel.user" Width="1.5" PointX="6" PointY="8.125" />
+        <AssociationConnector Association="DentalCareModel.FK_reservations_dentalPieces" />
+        <AssociationConnector Association="DentalCareModel.FK_implement_treatment_implements" />
+        <AssociationConnector Association="DentalCareModel.FK_implement_treatment_treatments" />
+        <AssociationConnector Association="DentalCareModel.FK_persons_roles" />
+        <AssociationConnector Association="DentalCareModel.FK_reservations_persons" />
+        <AssociationConnector Association="DentalCareModel.FK_reservations_persons1" />
+        <AssociationConnector Association="DentalCareModel.FK_users_persons" />
+        <AssociationConnector Association="DentalCareModel.FK_reservations_treatments" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
